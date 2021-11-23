@@ -16,16 +16,58 @@ class Cryptography(Resource):
         return response
     
     def post(self):
+        # BEGIN::Modifikasi encrypt function
+        def modifikasi_encryptor(raw_text):
+            processed_text = raw_text + ' encrypted with Modifikasi'
+            return processed_text
+        # END::Modifikasi encrypt function
+
+        # BEGIN::Playfair encrypt function
+        def playfair_encryptor(raw_text):
+            processed_text = raw_text + ' encrypted with Playfair'
+            return processed_text
+        # END::Playfair encrypt function
+
+        # BEGIN::Affine encrypt function
+        def affine_encryptor(raw_text):
+            processed_text = raw_text + ' encrypted with Affine'
+            return processed_text
+        # END::Affine encrypt function
+
+
+
+
+        # BEGIN::Modifikasi decrypt function
+        def modifikasi_decryptor(raw_text):
+            processed_text = raw_text + ' decrypted with Modifikasi'
+            return processed_text
+        # END::Modifikasi decrypt function
+
+        # BEGIN::Playfair decrypt function
+        def playfair_decryptor(raw_text):
+            processed_text = raw_text + ' decrypted with Playfair'
+            return processed_text
+        # END::Playfair decrypt function
+
+        # BEGIN::Affine decrypt function
+        def affine_decryptor(raw_text):
+            processed_text = raw_text + ' decrypted with Affine'
+            return processed_text
+        # END::Affine decrypt function
+
+
+
+
         # BEGIN::Encryptor function
         def encryptor(raw_text, option):
             if option == 'modifikasi':
-                processed_text = raw_text + ' encrypted with {}'.format(option)
+                processed_text = modifikasi_encryptor(raw_text)
                 return processed_text
             elif option == 'playfair':
-                processed_text = raw_text + ' encrypted with {}'.format(option)
+                processed_text = playfair_encryptor(raw_text)
                 return processed_text
             elif option == 'affine':
-                processed_text = raw_text + ' encrypted with {}'.format(option)
+                processed_text = affine_encryptor(raw_text)
                 return processed_text
             else:
                 return 'Jenis algoritma tidak tersedia'
@@ -34,13 +76,13 @@ class Cryptography(Resource):
         # BEGIN::Decryptor function
         def decryptor(raw_text, option):
             if option == 'modifikasi':
-                processed_text = raw_text + ' decrypted with {}'.format(option)
+                processed_text = modifikasi_decryptor(raw_text)
                 return processed_text
             elif option == 'playfair':
-                processed_text = raw_text + ' decrypted with {}'.format(option)
+                processed_text = playfair_decryptor(raw_text)
                 return processed_text
             elif option == 'affine':
-                processed_text = raw_text + ' decrypted with {}'.format(option)
+                processed_text = affine_decryptor(raw_text)
                 return processed_text
             else:
                 return 'Jenis algoritma tidak diketahui'
@@ -57,6 +99,9 @@ class Cryptography(Resource):
             else:
                 return 'Hanya dapat melakukan enkripsi dan dekripsi'
         # END::Checker function
+
+
+
 
         type = request.json['type']
         option = request.json['option']
